@@ -1,0 +1,38 @@
+# ISRO AGNIRISHI - Deployment Optimized Requirements
+# Lightweight version for cloud deployment (Streamlit Cloud, Heroku, etc.)
+
+# Core essentials only
+streamlit>=1.25.0
+numpy>=1.21.0
+pandas>=1.3.0
+plotly>=5.0.0
+folium>=0.12.0
+streamlit-folium>=0.13.0
+
+# Lightweight ML (no PyTorch for deployment)
+scikit-learn>=1.0.0
+
+# Basic visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# HTTP requests
+requests>=2.25.0
+
+# Date/time utilities
+python-dateutil>=2.8.0
+
+# Image processing (lightweight)
+Pillow>=8.0.0
+
+# Fast API (optional, only if API features needed)
+# fastapi>=0.68.0
+# uvicorn>=0.15.0
+
+# Utilities
+tqdm>=4.60.0
+
+# No heavy geospatial libraries
+# No PyTorch/deep learning libraries  
+# No database connectors
+# No system-level dependencies 

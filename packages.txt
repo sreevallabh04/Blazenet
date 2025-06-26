@@ -1,0 +1,16 @@
+# System packages for Streamlit Cloud deployment
+# These are installed at the system level before Python packages
+
+# Basic system utilities
+curl
+wget
+
+# Image processing support
+libjpeg-dev
+libpng-dev
+
+# For any scientific computing
+build-essential
+
+# Memory optimization
+gc 
