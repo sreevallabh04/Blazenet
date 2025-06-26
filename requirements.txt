@@ -1,67 +1,81 @@
-# ISRO AGNIRISHI - Forest Fire Prediction & Simulation System
-# Requirements for ISRO Hackathon Solution
-
-# Core ML/AI Libraries
+# ISRO AGNIRISHI - Complete Production System Requirements
+# Core ML and Data Science
 torch>=2.0.0
 torchvision>=0.15.0
-scikit-learn>=1.3.0
 numpy>=1.24.0
 pandas>=2.0.0
+scikit-learn>=1.3.0
 scipy>=1.10.0
-
-# Geospatial Data Processing (30m resolution raster handling)
-rasterio>=1.3.0
-fiona>=1.9.0
-geopandas>=0.13.0
-shapely>=2.0.0
-pyproj>=3.6.0
-xarray>=2023.1.0
-netCDF4>=1.6.0
-
-# ISRO/Indian Data Sources Integration
-requests>=2.31.0
-aiohttp>=3.8.0
-
-# Cellular Automata & Fire Spread Simulation
 matplotlib>=3.7.0
 seaborn>=0.12.0
 plotly>=5.15.0
-imageio>=2.31.0
 opencv-python>=4.8.0
 
-# Web Interface & Visualization
-streamlit>=1.25.0
-streamlit-folium>=0.13.0
+# Geospatial and Satellite Data
+rasterio>=1.3.0
+geopandas>=0.13.0
+shapely>=2.0.0
+pyproj>=3.6.0
+fiona>=1.9.0
 folium>=0.14.0
-altair>=5.0.0
+xarray>=2023.6.0
+netCDF4>=1.6.0
+h5py>=3.9.0
+
+# Web Framework and API
+streamlit>=1.25.0
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+pydantic>=2.0.0
+jinja2>=3.1.0
+python-multipart>=0.0.6
+
+# Database and Async
+psycopg2-binary>=2.9.0
+asyncpg>=0.28.0
+sqlalchemy>=2.0.0
+geoalchemy2>=0.14.0
+redis>=4.6.0
+
+# HTTP and Networking
+requests>=2.31.0
+aiohttp>=3.8.0
+httpx>=0.24.0
+
+# Utilities
+python-dotenv>=1.0.0
+pathlib2>=2.3.0
+pillow>=10.0.0
+python-dateutil>=2.8.0
+pytz>=2023.3
+joblib>=1.3.0
+tqdm>=4.65.0
+
+# System and Monitoring
+psutil>=5.9.0
+logging-config>=1.0.0
+
+# Development and Testing
+pytest>=7.4.0
+black>=23.7.0
+isort>=5.12.0
+
+# Cellular Automata & Fire Spread Simulation
+imageio>=2.31.0
+streamlit-folium>=0.13.0
 
 # API Development
-fastapi>=0.100.0
 uvicorn>=0.23.0
-pydantic>=2.0.0
 
 # Database (SQLite for standalone)
-sqlalchemy>=2.0.0
 sqlite3
 
 # Weather Data Processing (ERA-5, MOSDAC, IMD)
 cdsapi>=0.6.0
 ecmwflibs>=0.5.0
 
-# Utilities
-python-dotenv>=1.0.0
-Pillow>=10.0.0
-tqdm>=4.65.0
-jupyter>=1.0.0
-notebook>=6.5.0
-
-# VIIRS Fire Data Processing
-h5py>=3.9.0
-pyhdf>=0.10.0
-
 # Performance
 numba>=0.57.0
-joblib>=1.3.0
 
 # Visualization for 30m raster outputs
 bokeh>=3.2.0

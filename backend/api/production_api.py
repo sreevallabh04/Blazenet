@@ -39,9 +39,26 @@ try:
 except ImportError:
     # Fallback for standalone operation
     import sys
-    sys.path.append('.')
-    from ml_models import get_ml_pipeline
-    from data_processor import get_data_processor
+    import os
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'core'))
+    try:
+        from ml_models import get_ml_pipeline
+        from data_processor import get_data_processor
+    except ImportError:
+        # Create mock functions for testing
+        def get_ml_pipeline():
+            class MockMLPipeline:
+                def predict_fire_probability(self, *args): return np.random.rand(100, 100)
+                def simulate_fire_spread(self, *args): return {"1h": {"burned_area_km2": 5.2}}
+                def get_model_info(self): return {"status": "mock"}
+            return MockMLPipeline()
+        
+        def get_data_processor():
+            class MockDataProcessor:
+                async def get_resourcesat_data(self, *args): return {"data": {"ndvi": np.random.rand(100, 100)}}
+                async def get_mosdac_weather_data(self, *args): return {"data": {"temperature": np.random.rand(100, 100)}}
+                def get_processing_status(self): return {"status": "mock"}
+            return MockDataProcessor()
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)

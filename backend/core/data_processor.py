@@ -16,7 +16,6 @@ import rasterio
 from rasterio.transform import from_bounds
 from rasterio.crs import CRS
 from rasterio.warp import reproject, Resampling
-import xarray as xr
 import requests
 import asyncio
 import aiohttp
@@ -25,11 +24,25 @@ from pathlib import Path
 import logging
 from datetime import datetime, timedelta
 import json
-import h5py
-import netCDF4 as nc
 from scipy.ndimage import gaussian_filter, uniform_filter
 from scipy.interpolate import griddata
 import cv2
+
+# Optional imports with fallbacks
+try:
+    import xarray as xr
+except ImportError:
+    xr = None
+
+try:
+    import h5py
+except ImportError:
+    h5py = None
+
+try:
+    import netCDF4 as nc
+except ImportError:
+    nc = None
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -750,13 +763,19 @@ class ISROSatelliteDataProcessor:
         # Save as NetCDF
         filename = output_dir / "weather_data.nc"
         
-        # Convert to xarray dataset
-        data_vars = {}
-        for param, data in weather_data["data"].items():
-            data_vars[param] = (["y", "x"], data)
-        
-        ds = xr.Dataset(data_vars)
-        ds.to_netcdf(filename)
+        # Convert to xarray dataset if available
+        if xr is not None:
+            data_vars = {}
+            for param, data in weather_data["data"].items():
+                data_vars[param] = (["y", "x"], data)
+            
+            ds = xr.Dataset(data_vars)
+            ds.to_netcdf(filename)
+        else:
+            # Fallback: save as numpy files
+            for param, data in weather_data["data"].items():
+                param_file = output_dir / f"{param}.npy"
+                np.save(param_file, data)
     
     def _save_terrain_data(self, terrain_data: Dict):
         """Save terrain data."""
