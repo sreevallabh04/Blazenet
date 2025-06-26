@@ -1,0 +1,26 @@
+{
+  "dataset_info": {
+    "name": "BlazeNet Simple Sample Dataset",
+    "description": "Basic sample data for testing BlazeNet (no rasterio dependencies)",
+    "region": "Uttarakhand, India",
+    "created": "2025-06-26T10:38:14.792208",
+    "bounds": {
+      "min_lat": 28.8,
+      "max_lat": 31.4,
+      "min_lon": 77.5,
+      "max_lon": 81.0
+    }
+  },
+  "files": {
+    "weather_data.csv": {
+      "type": "Weather Station Data",
+      "records": 504,
+      "description": "7 days of hourly weather data"
+    },
+    "fire_history.csv": {
+      "type": "Fire Incident Records",
+      "records": 50,
+      "description": "Historical fire data"
+    }
+  }
+}

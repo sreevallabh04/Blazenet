@@ -1,0 +1,36 @@
+Simulation/Modelling of Forest Fire Spread using AI/ML techniques
+Uncontrolled forest fires represent a significant challenge for government agencies tasked with preserving biodiversity and maintaining air quality. The spread of such fires is influenced by factors including weather conditions (temperature, precipitation, humidity, wind), terrain (slope, aspect, fuel availability), and human activity. With modern geospatial technologies, datasets from the Forest Survey of India and global services like VIIRS-SNP are accessible. Despite this, real-time simulation and forecasting remain complex. Short-term forecasting and dynamic simulation are crucial for timely preventive measures. AI/ML techniques offer promising capabilities to extract insights, helping planners estimate damage, prioritize containment, and mitigate fire impacts.
+
+Objective:
+Prepare a forest fire probability map for the next day for a chosen region (e.g., Uttarakhand). Generate a binary classification map (fire/no fire).
+Simulate the spread of fire within 1, 2, 3, 6, and 12 hours from high-risk zones identified in Objective 1.
+Note: Output format should be a raster file with 30m pixel/grid resolution.
+
+Expected Outcomes:
+a) Fire prediction map for the next day.
+b) Simulated fire spread with animation for 1/2/3/6/12 hours.
+
+Dataset Required:
+a) Weather Data: Wind speed/direction, temperature, rainfall, humidity (from MOSDAC, ERA-5, IMD)
+b) Terrain Parameters: Slope and aspect (from 30m DEM available on Bhoonidhi portal)
+c) Thematic Data: Fuel Availability using LULC datasets
+
+Expected Solution / Steps to be followed to achieve the objectives:
+Use LULC maps (from Bhuvan/Sentinel Hub) for an area like Uttarakhand.
+Collect historical weather raster data (from IMD or ERA-5).
+Derive slope and aspect from DEM via Bhoonidhi Portal.
+Use GHSL for human settlement & stressor layers (e.g., roads).
+Resample all datasets to 30m resolution to form the feature stack.
+Use historical fire data (e.g., VIIRS) as the target variable.
+Train a U-NET or LSTM to predict fire probabilities (classes: high, moderate, low, nil).
+Simulate fire spread using Cellular Automata based on wind, slope, and fuel data.
+
+
+Evaluation Parameters:
+Accuracy of prediction maps and fidelity of the spread simulation models will be the key evaluation metrics.
+
+Suggested Tools/Technologies:
+Python, Scikit-learn, ML techniques such as U-NET or LSTM for prediction, and Cellular Automata or other ML models for fire spread simulation.
+
+Image Representing Problem Statement:
+C:\Users\sriva\OneDrive\Desktop\Blazenet\ISRO PS1.png
